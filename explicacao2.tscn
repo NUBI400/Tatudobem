@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=3 uid="uid://du235ulqe1334"]
+
+[ext_resource type="Script" uid="uid://dp4f7wca6p7lg" path="res://explicacao2.gd" id="1_81761"]
+[ext_resource type="Theme" uid="uid://c6tlup3n4bg82" path="res://TEMA_MENU.tres" id="2_fiwx8"]
+[ext_resource type="Texture2D" uid="uid://c2fulf2rerjq0" path="res://assets/boostbar-Sheet.png" id="3_vlans"]
+[ext_resource type="Shader" uid="uid://dd04hob5mta8n" path="res://shader/TEXTBU.gdshader" id="4_lybaq"]
+[ext_resource type="Texture2D" uid="uid://cwqjnxjfpt0c3" path="res://assets/dash update SEI LA.png" id="5_3lqfe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laqie"]
+atlas = ExtResource("3_vlans")
+region = Rect2(784, 0, 196, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5evll"]
+atlas = ExtResource("3_vlans")
+region = Rect2(588, 0, 196, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhck4"]
+atlas = ExtResource("3_vlans")
+region = Rect2(392, 0, 196, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl5tc"]
+atlas = ExtResource("3_vlans")
+region = Rect2(196, 0, 196, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l6j0"]
+atlas = ExtResource("3_vlans")
+region = Rect2(0, 0, 196, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l3wh3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_laqie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5evll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhck4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pl5tc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l6j0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omfcv"]
+shader = ExtResource("4_lybaq")
+shader_parameter/height = 5.0
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
+
+[node name="explicacao" type="CanvasLayer"]
+script = ExtResource("1_81761")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = -119.0
+offset_right = 720.0
+offset_bottom = 584.0
+color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -285.0
+offset_right = 293.0
+offset_bottom = 306.0
+grow_horizontal = 2
+theme = ExtResource("2_fiwx8")
+theme_override_font_sizes/font_size = 35
+text = " → quando este item for coletado, voce recebera
+  1 carga de dash representada pela barra abaixo
+
+
+
+    para usar dash, pule e aperte (B) com (→)"
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -117.0
+offset_top = -33.0
+offset_right = 117.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme = ExtResource("2_fiwx8")
+theme_override_font_sizes/font_size = 20
+text = "aperte start ou esc para continuar"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(360, 137)
+sprite_frames = SubResource("SpriteFrames_l3wh3")
+frame_progress = 0.755025
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_omfcv")
+position = Vector2(62.0001, 33)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_3lqfe")

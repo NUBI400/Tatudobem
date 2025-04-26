@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://b75kv2p51qjwn"]
+
+[ext_resource type="Texture2D" uid="uid://cwqjnxjfpt0c3" path="res://assets/dash update SEI LA.png" id="1_565pk"]
+[ext_resource type="Script" uid="uid://dycrn3sdt8mlc" path="res://cenas/dashup.gd" id="1_ujil3"]
+[ext_resource type="Shader" uid="uid://dd04hob5mta8n" path="res://shader/TEXTBU.gdshader" id="2_3b3n2"]
+[ext_resource type="AudioStream" uid="uid://mcild7qtgjfl" path="res://sounds/slime_jump (1).mp3" id="4_v7xog"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fp5w"]
+size = Vector2(31.4286, 32.8571)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n81p3"]
+shader = ExtResource("2_3b3n2")
+shader_parameter/height = 5.0
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["dashup"]]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_ujil3")
+
+[node name="Area2D" type="Area2D" parent="." groups=["dashup"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["dashup"]]
+position = Vector2(-10, 0.714284)
+shape = SubResource("RectangleShape2D_1fp5w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_n81p3")
+texture = ExtResource("1_565pk")
+
+[node name="upsom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_v7xog")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

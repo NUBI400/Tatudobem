@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://dntng3lvcd7u2"]
+
+[ext_resource type="Script" uid="uid://cn6dtjry483d" path="res://cenas/ParallaxBackground.gd" id="1_qgw07"]
+[ext_resource type="Texture2D" uid="uid://djgqspkempt6l" path="res://assets/fundo/TATUPARALLAX.png" id="2_2jpnc"]
+[ext_resource type="Texture2D" uid="uid://ima0lv03kt1d" path="res://assets/fundo/TATUPARALLAX2.png" id="3_nule6"]
+[ext_resource type="Texture2D" uid="uid://b8tyrtnh43ys0" path="res://assets/fundo/TATUPARALLAX3.png" id="4_orxp5"]
+[ext_resource type="Texture2D" uid="uid://b4sw1r266t4dh" path="res://assets/fundo/TATUPARALLAX4.png" id="5_475wp"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+offset = Vector2(-360, 0)
+transform = Transform2D(1, 0, 0, 1, -360, 0)
+follow_viewport_enabled = true
+script = ExtResource("1_qgw07")
+scroll_speed = -300
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(720, 180)
+scale = Vector2(4, 4)
+texture = ExtResource("2_2jpnc")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+position = Vector2(720, 180)
+scale = Vector2(2, 2)
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(720, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer3"]
+scale = Vector2(2, 2)
+texture = ExtResource("3_nule6")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+position = Vector2(720, 180)
+scale = Vector2(2, 2)
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(720, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+scale = Vector2(2, 2)
+texture = ExtResource("4_orxp5")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+position = Vector2(720, 180)
+scale = Vector2(2, 2)
+motion_mirroring = Vector2(720, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer4"]
+scale = Vector2(2, 2)
+texture = ExtResource("5_475wp")

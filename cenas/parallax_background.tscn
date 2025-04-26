@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://brnn55s83kw6j"]
+
+[ext_resource type="Texture2D" uid="uid://djgqspkempt6l" path="res://assets/fundo/TATUPARALLAX.png" id="1_rqkwd"]
+[ext_resource type="Texture2D" uid="uid://ima0lv03kt1d" path="res://assets/fundo/TATUPARALLAX2.png" id="2_w38mu"]
+[ext_resource type="Texture2D" uid="uid://b8tyrtnh43ys0" path="res://assets/fundo/TATUPARALLAX3.png" id="3_b4oul"]
+[ext_resource type="Texture2D" uid="uid://b4sw1r266t4dh" path="res://assets/fundo/TATUPARALLAX4.png" id="4_3xdaw"]
+[ext_resource type="Texture2D" uid="uid://dlq7udrjkl8gv" path="res://assets/fundo/TATUPARALLAX5.png" id="4_exha3"]
+
+[sub_resource type="GDScript" id="GDScript_w5baq"]
+script/source = "extends ParallaxBackground
+
+@export var scrolling_speed = 750
+func _process(delta):
+	scroll_offset.x -=scrolling_speed*delta
+"
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = SubResource("GDScript_w5baq")
+
+[node name="Fundo" type="Sprite2D" parent="."]
+position = Vector2(360, 180)
+scale = Vector2(4, 4)
+texture = ExtResource("1_rqkwd")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+position = Vector2(0, -459)
+motion_scale = Vector2(0.01, 0.01)
+motion_mirroring = Vector2(720, 0)
+
+[node name="Estrelas-1" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(360, 655)
+scale = Vector2(4, 4)
+texture = ExtResource("2_w38mu")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+position = Vector2(2, -459)
+motion_scale = Vector2(0.07, 0.07)
+motion_mirroring = Vector2(720, 0)
+
+[node name="Estrelas" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(360, 671)
+scale = Vector2(4, 4)
+texture = ExtResource("3_b4oul")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+position = Vector2(2, -459)
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(860, 0)
+
+[node name="Estrelas" type="Sprite2D" parent="ParallaxLayer4"]
+position = Vector2(360, 655)
+scale = Vector2(4, 4)
+texture = ExtResource("4_exha3")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+position = Vector2(0, -918)
+motion_mirroring = Vector2(720, 0)
+
+[node name="Estrelas" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(360, 1110)
+scale = Vector2(4, 4)
+texture = ExtResource("4_3xdaw")

@@ -1,0 +1,319 @@
+[gd_scene load_steps=30 format=3 uid="uid://crem0hsd4lqo8"]
+
+[ext_resource type="Script" uid="uid://jvtiwebdrf87" path="res://scripts/cena_principal.gd" id="1_2x1o6"]
+[ext_resource type="PackedScene" uid="uid://brnn55s83kw6j" path="res://cenas/parallax_background.tscn" id="1_h7jim"]
+[ext_resource type="PackedScene" uid="uid://dj6rlurkjlm0w" path="res://cenas/tile_.tscn" id="2_orxvh"]
+[ext_resource type="PackedScene" uid="uid://c4n7gynty2itc" path="res://cenas/tile_2.tscn" id="3_16tvh"]
+[ext_resource type="PackedScene" uid="uid://d0xvsjod47k3i" path="res://cenas/player.tscn" id="5_6ifei"]
+[ext_resource type="Shader" uid="uid://dd04hob5mta8n" path="res://shader/TEXTBU.gdshader" id="6_cif7j"]
+[ext_resource type="Texture2D" uid="uid://djl6nfhwuc65w" path="res://assets/botaoreplaytatu-Sheet1.png" id="7_jom30"]
+[ext_resource type="Texture2D" uid="uid://c0ua2okqdhbcn" path="res://assets/botaoreplaytatu-Sheet2.png" id="8_oy0tp"]
+[ext_resource type="Script" uid="uid://bf8is1sojgxfw" path="res://scripts/TextureButton2.gd" id="9_rxyg5"]
+[ext_resource type="Texture2D" uid="uid://c2fulf2rerjq0" path="res://assets/boostbar-Sheet.png" id="10_on7vn"]
+[ext_resource type="AudioStream" uid="uid://cigynigpx5f15" path="res://sounds/Menu-Selection-Click.mp3" id="11_4mt3d"]
+[ext_resource type="FontFile" uid="uid://ficl48ig0jcd" path="res://assets/95704 (1).ttf" id="12_0a3ox"]
+[ext_resource type="Script" uid="uid://ch2k378l5kl21" path="res://cenas/Label.gd" id="12_yq44d"]
+[ext_resource type="PackedScene" uid="uid://b75kv2p51qjwn" path="res://cenas/dashup.tscn" id="15_3lr4e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnc5n"]
+size = Vector2(757, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcx7o"]
+size = Vector2(17, 457)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okem3"]
+atlas = ExtResource("10_on7vn")
+region = Rect2(784, 0, 196, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82ydu"]
+atlas = ExtResource("10_on7vn")
+region = Rect2(0, 0, 196, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwtrn"]
+atlas = ExtResource("10_on7vn")
+region = Rect2(196, 0, 196, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewat7"]
+atlas = ExtResource("10_on7vn")
+region = Rect2(392, 0, 196, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp5as"]
+atlas = ExtResource("10_on7vn")
+region = Rect2(588, 0, 196, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7p0v3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okem3")
+}],
+"loop": true,
+"name": &"cabo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82ydu")
+}],
+"loop": true,
+"name": &"chei",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwtrn")
+}],
+"loop": true,
+"name": &"chei2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewat7")
+}],
+"loop": true,
+"name": &"chei3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp5as")
+}],
+"loop": true,
+"name": &"chei4",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_adpet"]
+resource_name = "fade_in"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/ColorRect:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mt66j"]
+resource_name = "fade_in botão"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/TextureButton:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/TextureButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_s7sps"]
+resource_name = "fade_out"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_frnjg"]
+_data = {
+&"fade_in": SubResource("Animation_adpet"),
+&"fade_in botão": SubResource("Animation_mt66j"),
+&"fade_out": SubResource("Animation_s7sps")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6nam2"]
+shader = ExtResource("6_cif7j")
+shader_parameter/height = 5.0
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="InputEventAction" id="InputEventAction_ecoig"]
+action = &"start"
+
+[sub_resource type="Shortcut" id="Shortcut_om02p"]
+events = [SubResource("InputEventAction_ecoig")]
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("padrao1", "padrao2")]
+script = ExtResource("1_2x1o6")
+padrao1 = NodePath("TileMap")
+padrao2 = NodePath("TileMap2")
+
+[node name="TileMap" parent="." instance=ExtResource("2_orxvh")]
+position = Vector2(720, 0)
+
+[node name="TileMap2" parent="." instance=ExtResource("3_16tvh")]
+position = Vector2(1440, 0)
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_h7jim")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(360, 346)
+shape = SubResource("RectangleShape2D_wnc5n")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(361.5, -116)
+shape = SubResource("RectangleShape2D_wnc5n")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-8, 131)
+shape = SubResource("RectangleShape2D_jcx7o")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(729.5, 135.5)
+shape = SubResource("RectangleShape2D_jcx7o")
+
+[node name="player" parent="." instance=ExtResource("5_6ifei")]
+position = Vector2(152, 261)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_right = 4.0
+offset_bottom = 27.0
+show_percentage = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ProgressBar"]
+position = Vector2(360, 341)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_7p0v3")
+animation = &"chei4"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_frnjg")
+}
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+z_index = 1
+offset_right = 728.0
+offset_bottom = 373.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="AnimationPlayer"]
+visible = false
+z_index = 1
+offset_right = 728.0
+offset_bottom = 373.0
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 360.0
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
+top_level = true
+material = SubResource("ShaderMaterial_6nam2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -34.0
+offset_right = 32.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+shortcut = SubResource("Shortcut_om02p")
+texture_normal = ExtResource("7_jom30")
+texture_pressed = ExtResource("8_oy0tp")
+script = ExtResource("9_rxyg5")
+
+[node name="spawndash" type="Timer" parent="."]
+wait_time = 17.0
+autostart = true
+
+[node name="PONTOSTT" type="Timer" parent="."]
+autostart = true
+
+[node name="botosom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_4mt3d")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 2.0
+offset_right = 739.0
+offset_bottom = 117.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("12_0a3ox")
+theme_override_font_sizes/font_size = 60
+text = "a"
+script = ExtResource("12_yq44d")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("15_3lr4e")]
+position = Vector2(963, 250)
+
+[connection signal="button_down" from="Control/TextureButton" to="Control/TextureButton" method="_on_button_down"]
+[connection signal="pressed" from="Control/TextureButton" to="Control/TextureButton" method="_on_pressed"]
+[connection signal="timeout" from="spawndash" to="." method="_on_spawndash_timeout"]

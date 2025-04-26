@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://sk0gclc3e14h"]
+
+[ext_resource type="Texture2D" uid="uid://bsoi3daelpnnh" path="res://assets/Tatu do Ben Rolandodns-Sheet.png" id="1_1f8i2"]
+[ext_resource type="Script" uid="uid://ctkftfnmlrs10" path="res://scripts/ghost.gd" id="2_6k7x6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxxkx"]
+atlas = ExtResource("1_1f8i2")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qp8o0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxxkx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_qp8o0")
+script = ExtResource("2_6k7x6")

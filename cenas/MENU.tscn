@@ -1,0 +1,189 @@
+[gd_scene load_steps=26 format=3 uid="uid://cr8jomb4xlodn"]
+
+[ext_resource type="Script" uid="uid://demvcltrgh8j3" path="res://scripts/MENU.gd" id="1_3wb4s"]
+[ext_resource type="PackedScene" uid="uid://brnn55s83kw6j" path="res://cenas/parallax_background.tscn" id="1_al4if"]
+[ext_resource type="Texture2D" uid="uid://bfqh0hdefk1kh" path="res://assets/Tatu do Ben-Sheet (1).png" id="2_poj5f"]
+[ext_resource type="Shader" uid="uid://dd04hob5mta8n" path="res://shader/TEXTBU.gdshader" id="4_br1vt"]
+[ext_resource type="Texture2D" uid="uid://lofoajkxq6s1" path="res://assets/botaoplaytatu-Sheet1.png" id="5_f3r0t"]
+[ext_resource type="Texture2D" uid="uid://ckess30qyog8b" path="res://assets/botaoplaytatu-Sheet2.png" id="6_vgqog"]
+[ext_resource type="Script" uid="uid://qalxyen458er" path="res://scripts/TextureButton.gd" id="7_i4fjh"]
+[ext_resource type="PackedScene" uid="uid://csm5bccvb0sv4" path="res://cenas/TEXTOTESTE.tscn" id="8_r5k4r"]
+[ext_resource type="Shader" uid="uid://bvix1knx3n1mu" path="res://cenas/MENU.gdshader" id="9_2c0ie"]
+[ext_resource type="AudioStream" uid="uid://cigynigpx5f15" path="res://sounds/Menu-Selection-Click.mp3" id="10_3c6md"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j21rp"]
+atlas = ExtResource("2_poj5f")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq4b8"]
+atlas = ExtResource("2_poj5f")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk35y"]
+atlas = ExtResource("2_poj5f")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6qjn"]
+atlas = ExtResource("2_poj5f")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nidhn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j21rp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq4b8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk35y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6qjn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_4ilin"]
+offsets = PackedFloat32Array(0, 0.466667)
+colors = PackedColorArray(1, 1, 1, 1, 0.838897, 0.838897, 0.838897, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7e56f"]
+gradient = SubResource("Gradient_4ilin")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2ifxc"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 15.0
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+scale_max = 4.0
+color_ramp = SubResource("GradientTexture1D_7e56f")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0820f"]
+shader = ExtResource("4_br1vt")
+shader_parameter/height = 5.0
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="InputEventAction" id="InputEventAction_bauqg"]
+action = &"start"
+
+[sub_resource type="Shortcut" id="Shortcut_bjukv"]
+events = [SubResource("InputEventAction_bauqg")]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apx6l"]
+shader = ExtResource("9_2c0ie")
+shader_parameter/height = 4.0
+shader_parameter/frequency = 5.0
+shader_parameter/speed = -4.0
+
+[sub_resource type="Animation" id="Animation_h8nuv"]
+resource_name = "fade_in"
+
+[sub_resource type="Animation" id="Animation_qcy40"]
+resource_name = "fade_out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ji65k"]
+_data = {
+&"fade_in": SubResource("Animation_h8nuv"),
+&"fade_out": SubResource("Animation_qcy40")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_3wb4s")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_al4if")]
+
+[node name="tatudobenanda" type="AnimatedSprite2D" parent="ParallaxBackground"]
+position = Vector2(128, 296)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_nidhn")
+frame = 1
+frame_progress = 0.998166
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ParallaxBackground/tatudobenanda"]
+show_behind_parent = true
+position = Vector2(-4, 7)
+amount = 35
+process_material = SubResource("ParticleProcessMaterial_2ifxc")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 360.0
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+material = SubResource("ShaderMaterial_0820f")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 20.0
+offset_right = 32.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+shortcut = SubResource("Shortcut_bjukv")
+texture_normal = ExtResource("5_f3r0t")
+texture_pressed = ExtResource("6_vgqog")
+script = ExtResource("7_i4fjh")
+
+[node name="Node2D" parent="Control" instance=ExtResource("8_r5k4r")]
+material = SubResource("ShaderMaterial_apx6l")
+position = Vector2(357, 99)
+scale = Vector2(3.5, 3.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ji65k")
+}
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -4.0
+offset_right = 731.0
+offset_bottom = 367.0
+color = Color(0, 0, 0, 1)
+
+[node name="botosom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_3c6md")
+
+[connection signal="pressed" from="Control/TextureButton" to="Control/TextureButton" method="_on_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="Control/TextureButton" method="_on_animation_player_animation_finished"]

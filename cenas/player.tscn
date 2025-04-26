@@ -1,0 +1,225 @@
+[gd_scene load_steps=31 format=3 uid="uid://d0xvsjod47k3i"]
+
+[ext_resource type="Script" uid="uid://csp6qke5r0voq" path="res://scripts/CharacterBody2D.gd" id="1_d4wa5"]
+[ext_resource type="PackedScene" uid="uid://sk0gclc3e14h" path="res://cenas/ghost.tscn" id="2_fhp8b"]
+[ext_resource type="Texture2D" uid="uid://bfqh0hdefk1kh" path="res://assets/Tatu do Ben-Sheet (1).png" id="2_ly026"]
+[ext_resource type="Texture2D" uid="uid://bsoi3daelpnnh" path="res://assets/Tatu do Ben Rolandodns-Sheet.png" id="3_ct7m8"]
+[ext_resource type="Texture2D" uid="uid://c82nqq368j62x" path="res://assets/Tatu do Benbaixoreal.png" id="3_mdsxu"]
+[ext_resource type="AudioStream" uid="uid://be5w8oyyiaasq" path="res://sounds/jump_02.mp3" id="6_jm0ku"]
+[ext_resource type="AudioStream" uid="uid://dqsm86w1orgs2" path="res://sounds/sfx_interact.mp3" id="7_th2px"]
+[ext_resource type="AudioStream" uid="uid://dsbj32acwpc0n" path="res://sounds/sfx_step_grass_l.mp3" id="8_hy014"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qssse"]
+atlas = ExtResource("2_ly026")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxoen"]
+atlas = ExtResource("2_ly026")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eaxb"]
+atlas = ExtResource("2_ly026")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp278"]
+atlas = ExtResource("2_ly026")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4pue"]
+atlas = ExtResource("3_ct7m8")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qmm3"]
+atlas = ExtResource("3_ct7m8")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46v1m"]
+atlas = ExtResource("3_ct7m8")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vam2q"]
+atlas = ExtResource("3_ct7m8")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx81e"]
+atlas = ExtResource("3_mdsxu")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3gtj"]
+atlas = ExtResource("3_mdsxu")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mrx1"]
+atlas = ExtResource("3_mdsxu")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21qix"]
+atlas = ExtResource("3_mdsxu")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efopj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qssse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxoen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8eaxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp278")
+}],
+"loop": true,
+"name": &"andando",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4pue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qmm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46v1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vam2q")
+}],
+"loop": true,
+"name": &"pulando",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xx81e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3gtj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mrx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21qix")
+}],
+"loop": true,
+"name": &"rolando",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcsif"]
+size = Vector2(89.1427, 115.2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7n0x"]
+size = Vector2(45, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdh57"]
+size = Vector2(45, 23)
+
+[sub_resource type="Gradient" id="Gradient_w7sne"]
+colors = PackedColorArray(0, 0, 0, 1, 0.838897, 0.838897, 0.838897, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_adtp5"]
+gradient = SubResource("Gradient_w7sne")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w5wc4"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 55.0
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -34.74
+linear_accel_max = 100.0
+scale_max = 5.0
+color_ramp = SubResource("GradientTexture1D_adtp5")
+
+[sub_resource type="Gradient" id="Gradient_scf0e"]
+offsets = PackedFloat32Array(0, 0.466667)
+colors = PackedColorArray(1, 1, 1, 1, 0.838897, 0.838897, 0.838897, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_etrkf"]
+gradient = SubResource("Gradient_scf0e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7cms2"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 30.0
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 43.17
+linear_accel_max = 43.17
+scale_max = 4.0
+color_ramp = SubResource("GradientTexture1D_etrkf")
+
+[node name="player" type="CharacterBody2D" groups=["jogador"]]
+script = ExtResource("1_d4wa5")
+ghost_node = ExtResource("2_fhp8b")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-1, -6)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_efopj")
+animation = &"andando"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.4375, 0.3125)
+shape = SubResource("RectangleShape2D_lcsif")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Alto" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -4)
+shape = SubResource("RectangleShape2D_y7n0x")
+
+[node name="Baixo" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 7.5)
+shape = SubResource("RectangleShape2D_hdh57")
+
+[node name="Bounce" type="Timer" parent="."]
+wait_time = 0.001
+autostart = true
+
+[node name="GhostTimer" type="Timer" parent="."]
+wait_time = 0.15
+
+[node name="pulosom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_jm0ku")
+
+[node name="dash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_th2px")
+
+[node name="agachasom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_hy014")
+
+[node name="Pontos" type="Timer" parent="."]
+autostart = true
+
+[node name="Multiplicador" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(-19, 0)
+emitting = false
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_w5wc4")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2(-12, 15)
+emitting = false
+amount = 35
+process_material = SubResource("ParticleProcessMaterial_7cms2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Bounce" to="." method="_on_bounce_timeout"]
+[connection signal="timeout" from="GhostTimer" to="." method="_on_ghost_timer_timeout"]
+[connection signal="timeout" from="Pontos" to="." method="_on_pontos_timeout"]
+[connection signal="timeout" from="Multiplicador" to="." method="_on_multiplicador_timeout"]

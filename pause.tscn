@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://c74qwj5ljmmvf"]
+
+[sub_resource type="Resource" id="Resource_eylr0"]
+metadata/__load_path__ = "res://scripts/pause_menu.gd"
+
+[sub_resource type="Resource" id="Resource_45vjg"]
+metadata/__load_path__ = "res://TEMA_MENU - Copia.tres"
+
+[sub_resource type="InputEventAction" id="InputEventAction_e5t3g"]
+action = &"pause"
+
+[sub_resource type="Shortcut" id="Shortcut_fb25o"]
+events = [SubResource("InputEventAction_e5t3g")]
+
+[sub_resource type="Resource" id="Resource_aq7p1"]
+metadata/__load_path__ = "res://TEMA_MENU - Copia.tres"
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+script = SubResource("Resource_eylr0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.462745)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -33.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="resume" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Resource_45vjg")
+shortcut = SubResource("Shortcut_fb25o")
+text = "RESUME"
+
+[node name="sair" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Resource_aq7p1")
+text = "SAIR"
+
+[connection signal="pressed" from="VBoxContainer/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/sair" to="." method="_on_sair_pressed"]
